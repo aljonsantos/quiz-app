@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  color: #3f3f3f;
+  background-color: #eeeeee;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+}
+
+main {
+  background-color: #fdf8f3;
+  padding: 35px 5% 25px 5%;
+  border-radius: 24px;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.heading {
+  font-weight: 800;
+  margin-bottom: 40px;
+  padding-left: 20px;
+  color: #383838;
+}
+
+.form--field {
+  border-bottom: 1px solid #e9e9e9;
+  padding: 20px 10px;
+}
+
+.field--title {
+  margin-bottom: 10px;
+}
+
+.field--choices {
+  font-family: "Inter", sans-serif;
+  padding: 15px 5px;
+  border: none;
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.field--choice {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.form button {
+  font-family: "Karla", sans-serif;
+  font-size: 1rem;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3273ff;
+  color: #ffffff;
+  margin-left: auto;
+}
+
+.form--info {
+  display: flex;
+  align-items: center;
+  padding: 30px 10px 15px 10px;
+}
+
+.form--info-text {
+  font-size: 0.8rem;
+  color: #3273ff;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="radio"]:checked + label {
+  border-color: #6a99ff;
+  color: #5276c5;
+}
+
+input[type="radio"]:not(:disabled):not(:checked) + label:hover {
+  border-color: #3f3f3f;
+}
+
+input[type="radio"].correct + label {
+  background-color: #c2ffe0;
+  border-color: #7de0af;
+  color: #3f3f3f;
+}
+
+input[type="radio"]:checked.incorrect + label {
+  background-color: #fdd1d1;
+  border-color: #e28a8a;
+  color: #3f3f3f;
+}
+
+input[type="radio"]:not(:disabled) + label,
+.form button:not(:disabled) {
+  cursor: pointer;
+}
+
+.form button:disabled {
+  opacity: 0.5;
+}
+
+input[type="radio"]:disabled + label {
+  opacity: 0.8;
+}
+
+label {
+  transition-property: color, border-color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+.loader {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 900px;
+  }
+}
