@@ -88,8 +88,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + label {
-  border-color: #6a99ff;
-  color: #5276c5;
+  background-color: #cccccc;
 }
 
 input[type="radio"]:not(:disabled):not(:checked) + label:hover {
@@ -123,7 +122,7 @@ input[type="radio"]:disabled + label {
 
 label {
   transition-property: color, border-color, background-color;
-  transition-duration: 200ms;
+  transition-duration: 150ms;
   transition-timing-function: ease-in-out;
 }
 

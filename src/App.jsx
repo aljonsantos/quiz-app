@@ -18,17 +18,17 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setQuestions(
-          data.results.map((q) => {
-            return {
-              ...q,
-              id: `q-${nanoid()}`,
-              choices: [...q.incorrect_answers, q.correct_answer].sort(
-                () => Math.random() - 0.5
-              ),
-            };
-          })
-        );
+        const questions = data.results.map((q) => {
+          return {
+            question: q.question,
+            correct_answer: q.correct_answer,
+            choices: [...q.incorrect_answers, q.correct_answer].sort(
+              () => Math.random() - 0.5
+            ),
+            id: `q-${nanoid()}`,
+          }
+        })
+        setQuestions(questions);
         setFormData(
           questions.reduce((acc, curr) => {
             acc[curr.id] = "";
@@ -40,24 +40,18 @@ function App() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [name]: value,
-      };
-    });
-    checkIfDone();
+    const updatedFormData = {...formData, [name]: value}
+    setFormData(updatedFormData);
+    setIsDone(checkIfDone(updatedFormData));
   }
 
-  function checkIfDone() {
-    let allFilledOut = true;
-    document.querySelectorAll("fieldset").forEach((fieldset) => {
-      const radio = fieldset.querySelector("input:checked");
-      if (!radio) {
-        allFilledOut = false;
+  function checkIfDone(formData) {
+    for (let key in formData) {
+      if (!formData[key]) {
+        return false;
       }
-    });
-    setIsDone(allFilledOut);
+    }
+    return true;
   }
 
   function handleSubmit(e) {
